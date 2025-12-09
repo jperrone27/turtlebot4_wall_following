@@ -1,0 +1,52 @@
+IR intensity echo output in ros2 for turtlebot4
+
+  ---
+header:
+  stamp:
+    sec: 1764963032
+    nanosec: 956442073
+  frame_id: base_link
+readings:
+- header:
+    stamp:
+      sec: 1764963032
+      nanosec: 956442073
+    frame_id: ir_intensity_side_left
+  value: 755
+- header:
+    stamp:
+      sec: 1764963032
+      nanosec: 956442073
+    frame_id: ir_intensity_left
+  value: 52
+- header:
+    stamp:
+      sec: 1764963032
+      nanosec: 956442073
+    frame_id: ir_intensity_front_left
+  value: 9
+- header:
+    stamp:
+      sec: 1764963032
+      nanosec: 956442073
+    frame_id: ir_intensity_front_center_left
+  value: 27
+- header:
+    stamp:
+      sec: 1764963032
+      nanosec: 956442073
+    frame_id: ir_intensity_front_center_right
+  value: 3
+- header:
+    stamp:
+      sec: 1764963032
+      nanosec: 956442073
+    frame_id: ir_intensity_front_right
+  value: 2
+- header:
+    stamp:
+      sec: 1764963032
+      nanosec: 956442073
+    frame_id: ir_intensity_right
+  value: 0
+---
