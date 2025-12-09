@@ -33,7 +33,7 @@ This node implements the control law based on the calculated errors.
 
 ### 3. `wf_bringup` (Launch/Setup)
 
-Contains launch files for starting all necessary nodes (`wf_perception` and `wf_controller`) simultaneously.
+Contains launch files for starting all necessary nodes simultaneously.
 
 ---
 
@@ -44,7 +44,7 @@ This project assumes you have a functional ROS 2 Humble/Iron workspace (e.g., `~
 1.  **Clone the repository into your ROS 2 workspace:**
     ```bash
    
-    git clone [YOUR_REPO_URL]
+    git clone [REPO_URL]
     ```
 
 2.  **Install Dependencies:** Ensure all required packages (`irobot_create_msgs`, `nav_msgs`, `std_msgs`, etc.) are installed on your system.
@@ -67,7 +67,7 @@ This project assumes you have a functional ROS 2 Humble/Iron workspace (e.g., `~
 1.  **Start the TurtleBot 4 base drivers.**
 2.  **Launch the control system:**
     ```bash
-    ros2 launch wf_bringup [your_launch_file_name].launch.py
+    ros2 launch wf_bringup wf_bringup.launch.py
     ```
 
 ## 📈 Logging Odometry
@@ -77,7 +77,4 @@ The companion package **`wf_odometry`** is included to log the robot's estimated
 * **Topic Subscribed:** `/odom` (`nav_msgs/msg/Odometry`)
 * **Function:** Logs timestamped $(x, y)$ coordinates to a CSV file.
 
-To run the logger alongside the wall follower:
-
-```bash
-ros2 run wf_odometry logger # Or include it in your main launch file
+Odometry values will automatically write to .csv file in the /odom_logs directory.
