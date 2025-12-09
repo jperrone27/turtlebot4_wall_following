@@ -18,8 +18,8 @@ This node is responsible for reading the raw sensor data and calculating the err
 * **Output Topic:** `/wall_tracking` (to `std_msgs/msg/Float64MultiArray`)
 * **Sensor Logic:** It performs an **initial selection** on startup to determine the closest wall (left or right) and commits to that side for the duration of the run.
 * **Error Calculation:** Publishes two core values:
-    1.  **Distance Error ($\Delta D$):** Calculated from the rear-side IR sensor intensity relative to a calibrated `target_intensity`.
-    2.  **Angle Error ($\Delta \theta$):** Calculated from the difference between the **front-side** IR sensor intensity and the **rear-side** IR sensor intensity ($\text{Intensity}_{\text{front}} - \text{Intensity}_{\text{rear}}$).
+    1.  **Distance Error ( $$\Delta D$$ ):** Calculated from the rear-side IR sensor intensity relative to a calibrated `target_intensity`.
+    2.  **Angle Error ( $$\Delta \theta$$ ):** Calculated from the difference between the **front-side** IR sensor intensity and the **rear-side** IR sensor intensity.
 
 ### 2. `wf_controller` (Wall Controller Node)
 
@@ -27,9 +27,9 @@ This node implements the control law based on the calculated errors.
 
 * **Input Topic:** `/wall_tracking`
 * **Output Topic:** `/cmd_vel` (to `geometry_msgs/msg/Twist`)
-* **Control Law:** Uses a **Proportional-Derivative (PD) control structure** where the angular velocity ($\omega$) is determined by the linear combination of the two errors:
+* **Control Law:** Uses a **Proportional-Derivative (PD) control structure** where the angular velocity ($$\omega$$) is determined by the linear combination of the two errors:
     $$\omega = k_d \cdot \Delta D + k_{\theta} \cdot \Delta \theta$$
-* **Safety Logic:** Implements a **dynamic linear velocity ($v$) switch** that reduces forward speed during large corrective turns and ensures a minimum guaranteed speed to prevent stalling.
+* **Safety Logic:** Implements a **dynamic linear velocity ($$v$$) switch** that reduces forward speed during large corrective turns and ensures a minimum guaranteed speed to prevent stalling.
 
 ### 3. `wf_bringup` (Launch/Setup)
 
@@ -75,6 +75,6 @@ This project assumes you have a functional ROS 2 Humble/Iron workspace (e.g., `~
 The companion package **`wf_odometry`** is included to log the robot's estimated path during the run.
 
 * **Topic Subscribed:** `/odom` (`nav_msgs/msg/Odometry`)
-* **Function:** Logs timestamped $(x, y)$ coordinates to a CSV file.
+* **Function:** Logs timestamped $$(x, y)$$ coordinates to a CSV file.
 
 Odometry values will automatically write to .csv file in the /odom_logs directory.
