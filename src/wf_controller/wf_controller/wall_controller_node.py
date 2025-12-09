@@ -1,91 +1,3 @@
-# import rclpy
-# from rclpy.node import Node
-# from std_msgs.msg import Float64MultiArray
-# from geometry_msgs.msg import Twist
-# import numpy as np 
-
-# class WallControllerNode(Node):
-#     def __init__(self):
-#         super().__init__('wall_controller_node')
-#         # ... (Subscription and Publisher setup)
-        
-#         # --- TUNING PARAMETERS (REDUCED) ---
-#         self.kd = 0.001           # Adjusted significantly lower
-#         self.ktheta = 0.0005      # Adjusted significantly lower
-        
-#         self.v_nominal_high = 0.30 
-#         self.v_nominal_low = 0.10   
-
-#         # --- SAFETY THRESHOLDS ---
-#         self.DISTANCE_TOLERANCE = 50 
-#         self.ANGLE_TOLERANCE = 10 
-        
-#         # --- Minimum Guaranteed Linear Velocity (REDUCED) ---
-#         self.V_MIN_GUARANTEED = 0.05 # Reduced minimum speed
-    
-
-#     def callback(self, msg):
-#         distance_delta = msg.data[0] 
-#         angle_error = msg.data[1]    
-
-#         # 1. Calculate Angular Velocity (Omega)
-#         omega = self.kd * distance_delta + self.ktheta * angle_error
-        
-#         # Optional: Clamp Angular Velocity (prevent violent turns)
-#         max_omega = 0.5 # radians/second
-#         omega = np.clip(omega, -max_omega, max_omega)
-
-#         # --- 2. Safety and Mode Switching Logic (Modified) ---
-        
-#         is_tracking_well = (
-#             abs(distance_delta) < self.DISTANCE_TOLERANCE and 
-#             abs(angle_error) < self.ANGLE_TOLERANCE
-#         )
-
-#         if is_tracking_well:
-#             # Mode 1: Cruising Speed
-#             v = self.v_nominal_high
-#         else:
-#             # Mode 2: Correction Speed
-#             v = self.v_nominal_low
-        
-#         # --- CRITICAL FIX 1: Ensure Minimum Forward Movement ---
-#         # The linear velocity must be at least V_MIN_GUARANTEED
-#         v = max(v, self.V_MIN_GUARANTEED) 
-
-#         # --- CRITICAL FIX 2: Velocity Suppression for Extreme Turns ---
-#         # If the robot is commanded to turn very sharply, slow down the linear speed.
-#         # This prevents the robot from driving into the wall while turning.
-        
-#         # Calculate a suppression factor based on omega. Example: 1.0 - abs(omega) / max_omega
-#         # When omega is 0, factor is 1. When omega is max_omega, factor is 0.
-#         omega_ratio = abs(omega) / max_omega 
-        
-#         # Suppress V further if omega is large, but never below V_MIN
-#         v_suppressed = v * (1.0 - 0.75 * omega_ratio) # 0.75 is a scaling factor
-        
-#         v = max(v_suppressed, self.V_MIN_GUARANTEED)
-
-#         # --- 3. Publish Twist Command ---
-#         twist = Twist()
-#         twist.linear.x = float(v)
-#         twist.angular.z = float(omega)
-#         self.publisher.publish(twist)
-
-# def main(args=None):
-#     rclpy.init(args=args)
-#     node = WallControllerNode()
-#     try:
-#         rclpy.spin(node)
-#     except KeyboardInterrupt:
-#         pass
-#     node.destroy_node()
-#     rclpy.shutdown()
-
-# if __name__ == '__main__':
-#     main()
-
-# wall_controller_node_tb4.py
 import rclpy
 from rclpy.node import Node
 from std_msgs.msg import Float64MultiArray
@@ -94,7 +6,7 @@ import numpy as np
 
 class WallControllerNode(Node):
     def __init__(self):
-        super().__init__('wall_controller_node_tb4')
+        super().__init__('wall_controller_node')
 
         # Tunable parameters (declare to allow runtime changes)
         self.declare_parameter('kd', 0.002)            # distance gain

@@ -4,7 +4,7 @@
   <name>wf_odometry</name>
   <version>0.0.0</version>
   <description>ROS 2 node for logging robot odometry data (/odom) to a CSV file for path analysis.</description>
-  <maintainer email="@example.com">_</maintainer>
+  <maintainer email="example@example.com">example</maintainer>
   <license>MIT</license>
 
   <depend>rclpy</depend>

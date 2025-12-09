@@ -21,7 +21,7 @@ FRAMES = [
 
 class WallPerceptionNode(Node):
     def __init__(self):
-        super().__init__('wall_perception_node_tb4')
+        super().__init__('wall_perception_node')
 
         # Parameters (tune these)
         self.declare_parameter('target_intensity', 100.0)   # desired intensity ~ distance target
