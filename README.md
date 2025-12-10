@@ -4,6 +4,11 @@ This repository contains the ROS 2 packages developed for implementing an autono
 
 The initial design, which relied on LiDAR, was successfully adapted to use the higher-reliability IR sensor data for robust control in dynamic environments.
 
+
+## Demonstration Video
+
+The following is a link to a Youtube Shorts video demonstrating basic wall-following functionality in a lab envvironment: [Youtube Shorts Link](https://youtube.com/shorts/YgjRR1WlokQ?feature=share)
+
 ---
 
 ## 🚀 Overview and Control Strategy
