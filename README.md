@@ -1,4 +1,4 @@
-# 🤖 ROS 2 Wall Following (IR Sensor-Based)
+# ROS 2 Wall Following (IR Sensor-Based)
 
 This repository contains the ROS 2 packages developed for implementing an autonomous wall-following behavior on the **TurtleBot 4** platform using its built-in **Infrared (IR) proximity sensors**.
 
@@ -11,7 +11,7 @@ The following is a link to a Youtube Shorts video demonstrating basic wall-follo
 
 ---
 
-## 🚀 Overview and Control Strategy
+##  Overview and Control Strategy
 
 The system is split into three modular ROS 2 packages:
 
@@ -67,7 +67,7 @@ This project assumes you have a functional ROS 2 Humble/Iron workspace (e.g., `~
 
 ---
 
-## 🏃 Running the Wall Follower
+## Running the Wall Follower
 
 1.  **Start the TurtleBot 4 base drivers.**
 2.  **Launch the control system:**
@@ -75,7 +75,7 @@ This project assumes you have a functional ROS 2 Humble/Iron workspace (e.g., `~
     ros2 launch wf_bringup wf_bringup.launch.py
     ```
 
-## 📈 Logging Odometry
+## Logging Odometry
 
 The companion package **`wf_odometry`** is included to log the robot's estimated path during the run.
 
